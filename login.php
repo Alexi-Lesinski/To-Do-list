@@ -2,20 +2,20 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
+    $username = trim($_POST['username']);
     if (!empty($username)) {
-        $_SESSION['username'] = $username;
-        header('Location: index.php');
+        $_SESSION['username'] = htmlspecialchars($username);
+        header('Location: index.php'); 
         exit;
     } else {
-        echo "Veuillez saisir un nom d'utilisateur.";
+        $error = "Veuillez saisir un nom d'utilisateur.";
     }
 }
 ?>
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -27,9 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <form method="POST">
         <label for="username">Nom d'utilisateur:</label>
-        <input type="text" id="username" name="username" require>
-
-        <button type="submit">Envoyer</button>
+        <input type="text" id="username" name="username" required>
+        <button class="test" type="submit">Envoyer</button>
     </form>
 </body>
 

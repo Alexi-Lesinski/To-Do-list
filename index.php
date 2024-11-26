@@ -6,6 +6,15 @@ if (!isset($_SESSION['taches'])) {
     $_SESSION['taches'] = [];
 }
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deco'])) {
+    // Déconnexion : destruction de la session
+    session_unset();
+    session_destroy();
+
+    // Redirection vers la page de connexion
+    header('Location: login.php');
+    exit;
+} 
 // ajout d'une nouvelle tâche dans le tableau avec nom, description, id, date et état
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = isset($_POST['nameTask']) ? trim(htmlspecialchars($_POST['nameTask'])) : '';
@@ -46,6 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['completed'])) {
         }
     }
 }
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -56,6 +68,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['completed'])) {
     <link rel="stylesheet" href="CSS/styles.css">
 
 </head>
+
+<header>
+    <?php require_once 'nav.php';?>  <!-- inclusion du menu de navigation -->
+
+</header>
+
 
 <body>
     
