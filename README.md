@@ -38,3 +38,13 @@ This project is a simple **To-Do List Application** built with PHP and HTML. It 
 - PHP 7.4 or higher
 - A web server (e.g., Apache or Nginx) with PHP support
 - Basic knowledge of HTML and CSS for further customization
+
+## Future Improvements
+
+Add persistent storage (e.g., MySQL or SQLite database) instead of session-based storage.
+Implement user authentication with password protection.
+Enhance the UI with a frontend framework like Bootstrap or TailwindCSS.
+Include AJAX for a smoother, more dynamic user experience.
+vbnet
+Copier le code
+
